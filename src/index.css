@@ -11,3 +11,66 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.sidebar {
+  max-width: 250px;
+  height: 90vh;
+  border: 1px solid rgba(0,0,0,0.1);
+  overflow: auto;
+  background-color: #f9f9f9;
+}
+
+.sidebar-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-item-content {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar-item-icon{
+  margin-right: 6px;
+}
+
+.sidebar-item-text {
+  width: 100%;
+}
+
+.sidebar-item-expand-arrow {
+  font-size: 1.2rem !important;
+}
+
+.sidebar-item-expand-arrow-expanded {
+  color: #09bb12;
+  font-weight: bold;
+}
+
+.container-page {
+  background-color: #09bb12;
+  display: flex;
+}
+
+.item-header { grid-area: header; }
+.item-sidebar { grid-area: menu; }
+.item-main { grid-area: main; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas: 'header header header header header header'
+                       'menu main main main main main'
+                       'menu main main main main main';
+  background-color:whitesmoke;
+}
+
+.header-container {
+  background-color: #3d3b8e;
+  height: 10vh;
+  padding-left: 20px;
+}
