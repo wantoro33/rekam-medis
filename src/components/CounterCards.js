@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 
 function CounterCards({ label, hitung }) {
   return (
-    <div className="counter-card">
+    <div>
       <Card variant="outlined">
         <CardContent>
           <Typography gutterBottom>{label}</Typography>

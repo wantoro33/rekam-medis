@@ -15,7 +15,7 @@ code {
 
 .sidebar {
   max-width: 250px;
-  height: 93vh;
+  height: 90vh;
   border: 1px solid rgba(0, 0, 0, 0.1);
   overflow: auto;
   background-color: #f9f9f9;
@@ -80,13 +80,11 @@ code {
 
 .header-container {
   background-color: #3d3b8e;
-  height: 7vh;
+  height: 10vh;
   padding-left: 20px;
 }
 
-.counter-card {
+.counter-card-container {
   float: left;
   padding: 10px;
-  height: 200px;
-  width: 200px;
 }

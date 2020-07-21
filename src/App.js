@@ -31,7 +31,7 @@ function App() {
     <div className="App">
       <Grid container spacing={0}>
         <Router>
-          <Grid item md={12}>
+          <Grid item md={12} position='sticky'>
             <Header className="header-container" />
           </Grid>
           <Grid item md={2}>
