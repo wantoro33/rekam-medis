@@ -18,13 +18,16 @@ code {
   height: 90vh;
   border: 1px solid rgba(0, 0, 0, 0.1);
   overflow: auto;
-  background-color: #f9f9f9;
+  background: #f9f9f9;
 }
 
 .sidebar-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 250px;
+  padding-top: "10vh";
+  position: "fixed";
 }
 
 .sidebar-item-content {
@@ -54,7 +57,6 @@ code {
 }
 
 .container-page {
-  background-color: #09bb12;
   display: flex;
 }
 
@@ -63,6 +65,10 @@ code {
 }
 .item-sidebar {
   grid-area: menu;
+  width: 250px;
+  height: 90vh;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: auto;
 }
 .item-main {
   grid-area: main;
@@ -75,7 +81,6 @@ code {
     "header header header header header header"
     "menu main main main main main"
     "menu main main main main main";
-  background-color: rgb(155, 24, 24);
 }
 
 .header-container {

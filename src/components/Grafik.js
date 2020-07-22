@@ -6,17 +6,23 @@ import Button from "@material-ui/core/Button";
 import { Typography } from "@material-ui/core";
 
 function Grafik() {
-    return (
-        <Card variant='outlined>'>
-            <CardContent>
-                <Typography variant='h1'>Grafik</Typography>
-                <Typography variant='h1'>Grafik</Typography>
-            </CardContent>
-            <CardActions>
-                <Button size="small">Detail</Button>
-            </CardActions>
-        </Card>
-    )
+  return (
+    <Card variant="outlined>">
+      <CardContent>
+        <Typography variant="h1">Grafik</Typography>
+        <Typography variant="h1">Grafik</Typography>
+        <Typography variant="h1">Grafik</Typography>
+        <Typography variant="h1">Grafik</Typography>
+        <Typography variant="h1">Grafik</Typography>
+        <Typography variant="h1">Grafik</Typography>
+        <Typography variant="h1">Grafik</Typography>
+        <Typography variant="h1">Grafik</Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Detail</Button>
+      </CardActions>
+    </Card>
+  );
 }
 
-export default Grafik
+export default Grafik;

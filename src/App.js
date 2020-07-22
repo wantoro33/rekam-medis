@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Grid from "@material-ui/core/Grid";
+import AppBar from "@material-ui/core/AppBar";
 import SideBar from "./components/SideBar";
 import listMenu from "./components/ListMenu";
 import Header from "./components/Header";
@@ -31,13 +32,23 @@ function App() {
     <div className="App">
       <Grid container spacing={0}>
         <Router>
-          <Grid item md={12} position='sticky'>
-            <Header className="header-container" />
+          <Grid item md={12} position="fixed">
+            <AppBar position="fixed">
+              <Header className="header-container" />
+            </AppBar>
           </Grid>
-          <Grid item md={2}>
+          <Grid
+            item
+            md={2}
+            style={{ paddingTop: "10vh", position: "fixed", width: "250px" }}
+          >
             <SideBar menu={listMenu} className="item-sidebar" />
           </Grid>
-          <Grid item md={10}>
+          <Grid
+            item
+            md={10}
+            style={{ paddingTop: "10vh", marginLeft: "260px" }}
+          >
             <Switch>
               <Router exact path="/">
                 <Home />
