@@ -40,7 +40,12 @@ function App() {
           <Grid
             item
             md={2}
-            style={{ paddingTop: "10vh", position: "fixed", width: "250px" }}
+            style={{
+              paddingTop: "10vh",
+              position: "fixed",
+              width: "250px",
+              height: "100%",
+            }}
           >
             <SideBar menu={listMenu} className="item-sidebar" />
           </Grid>

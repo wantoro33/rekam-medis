@@ -15,7 +15,7 @@ code {
 
 .sidebar {
   max-width: 250px;
-  height: 90vh;
+  height: 100%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   overflow: auto;
   background: #f9f9f9;
@@ -66,9 +66,9 @@ code {
 .item-sidebar {
   grid-area: menu;
   width: 250px;
-  height: 90vh;
   border: 1px solid rgba(0, 0, 0, 0.1);
   overflow: auto;
+  background: #f9f9f9;
 }
 .item-main {
   grid-area: main;
