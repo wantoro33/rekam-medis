@@ -6,6 +6,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { withStyles } from "@material-ui/core/styles";
+import Aksi from "./Aksi";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -34,7 +35,7 @@ function FormTable(props) {
             <StyledTableCell>Kode Penyakit</StyledTableCell>
             <StyledTableCell align="left">Nama Penyakit</StyledTableCell>
             <StyledTableCell align="right">Aktif</StyledTableCell>
-            <StyledTableCell align="right">Aksi</StyledTableCell>
+            <StyledTableCell align="center">Aksi</StyledTableCell>
           </StyledTableRow>
         </TableHead>
         <TableBody>
@@ -43,7 +44,9 @@ function FormTable(props) {
               <StyledTableCell align="left">{row.kodePenyakit}</StyledTableCell>
               <StyledTableCell align="left">{row.namaPenyakit}</StyledTableCell>
               <StyledTableCell align="right">{row.aktif}</StyledTableCell>
-              <StyledTableCell align="right">aksi</StyledTableCell>
+              <StyledTableCell align="center">
+                <Aksi />
+              </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
