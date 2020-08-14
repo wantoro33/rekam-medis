@@ -26,7 +26,7 @@ function FormSearch() {
         <Button variant="contained" color="primary" onClick={toggle}>
           Tambah
         </Button>
-        <FormModal isShowing={isShowing} hide={toggle} />
+        <FormModal isShowing={isShowing} hide={toggle} opac={0.7} />
       </div>
       <div>
         <FormModal />

@@ -76,7 +76,7 @@ function Penyakit() {
                 </StyledTableCell>
                 <StyledTableCell align="center">
                   <EditIcon onClick={toggle} style={{ cursor: "pointer" }} />
-                  <FormModal isShowing={isShowing} hide={toggle} />
+                  <FormModal isShowing={isShowing} hide={toggle} opac={0.15} />
                   <DeleteIcon style={{ cursor: "pointer" }} />
                 </StyledTableCell>
               </TableRow>

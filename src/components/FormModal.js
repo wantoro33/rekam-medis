@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Button from "@material-ui/core/Button";
 
-const FormModal = ({ isShowing, hide }) =>
+const FormModal = ({ isShowing, hide, opac }) =>
   isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
-          <div className="modal-overlay2"></div>
+          <div className="modal-overlay2" style={{ opacity: opac }}></div>
           <div className="modal-overlay">
             <div
               className="modal-wrapper"
