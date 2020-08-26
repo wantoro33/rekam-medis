@@ -10,10 +10,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
 import useModal from "../../components/useModal";
-import FormModal from "../../components/FormModal";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -139,7 +136,7 @@ function ListObat() {
                     <StyledTableCell align="right">{obat.STOK}</StyledTableCell>
                     <StyledTableCell align="left">{obat.HAPUS}</StyledTableCell>
                     <StyledTableCell align="left">
-                      {obat.ID_SATUAN}
+                      {obat.satuan.SATUAN}
                     </StyledTableCell>
                     <StyledTableCell align="left">
                       {obat.CODE_OBAT}

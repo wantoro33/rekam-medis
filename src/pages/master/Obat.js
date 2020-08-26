@@ -9,7 +9,7 @@ import JudulForm from "../../components/JudulForm";
 
 function Obat() {
   let formObatContent = (
-    <Grid container spacing={3}>
+    <Grid container spacing={0}>
       <Grid item md={12}>
         <Switch>
           <Route exact path="/add" component={AddObat} />
