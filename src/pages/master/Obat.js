@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AddObat from "../../components/obat/AddObat";
 import ComObat from "../../components/obat/ComObat";
 import ListObat from "../../components/obat/ListObat";
