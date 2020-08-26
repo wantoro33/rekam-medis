@@ -10,7 +10,6 @@ import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
-import useModal from "../../components/useModal";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -39,8 +38,6 @@ function ListObat() {
   useEffect(() => {
     retrieveObat();
   }, []);
-
-  currentObat;
 
   const onChangeSearchTitle = (e) => {
     const searchTitle = e.target.value;
@@ -180,6 +177,7 @@ function ListObat() {
             </TableBody>
           </Table>
         </TableContainer>
+        {/* {currentObat} */}
       </div>
     </div>
   );
