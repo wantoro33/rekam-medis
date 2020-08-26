@@ -36,11 +36,11 @@ function ListObat() {
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchTitle, setSearchTitle] = useState("");
 
-  const { isShowing, toggle } = useModal();
-
   useEffect(() => {
     retrieveObat();
   }, []);
+
+  currentObat;
 
   const onChangeSearchTitle = (e) => {
     const searchTitle = e.target.value;
@@ -58,11 +58,11 @@ function ListObat() {
       });
   };
 
-  const refreshList = () => {
-    retrieveObat();
-    setCurrentObat(null);
-    setCurrentIndex(-1);
-  };
+  // const refreshList = () => {
+  //   retrieveObat();
+  //   setCurrentObat(null);
+  //   setCurrentIndex(-1);
+  // };
 
   const setActiveObat = (obat, index) => {
     setCurrentObat(obat);
@@ -162,7 +162,6 @@ function ListObat() {
                       <Button
                         variant="contained"
                         color="primary"
-                        onClick={toggle}
                         style={{ cursor: "pointer" }}
                         className={
                           "list-group-item " +
