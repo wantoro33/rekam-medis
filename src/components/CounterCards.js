@@ -4,6 +4,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import CountUp from "react-countup";
 
 function CounterCards({ label, hitung }) {
   return (
@@ -12,7 +13,7 @@ function CounterCards({ label, hitung }) {
         <CardContent>
           <Typography gutterBottom>{label}</Typography>
           <Typography variant="h2" component="h2">
-            {hitung}
+            <CountUp start={0} end={hitung} />
           </Typography>
         </CardContent>
         <CardActions>
