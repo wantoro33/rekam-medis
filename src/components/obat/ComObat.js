@@ -9,6 +9,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
+import Alert from "@material-ui/lab/Alert";
+import { Collapse } from "@material-ui/core";
+import CloseIcon from "@material-ui/icons/Close";
+import IconButton from "@material-ui/core/IconButton";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -23,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 function ComObat(props) {
   //begin load data satuan
   const classes = useStyles();
-  const [idSatuan, setIdSatuan] = React.useState(0);
+  const [idSatuan, setIdSatuan] = React.useState("");
   const [satuan, setSatuan] = useState([]);
 
   useEffect(() => {
@@ -55,8 +64,19 @@ function ComObat(props) {
     CODE_OBAT: "",
     HARGA: "",
   };
+
   const [currentObat, setCurrentObat] = useState(initialObatState);
   const [message, setMessage] = useState("");
+  const [openAlert, setOpenAlert] = React.useState(false);
+  const [openDelete, setOpenDelete] = React.useState(false);
+
+  const handleClickOpenDelete = () => {
+    setOpenDelete(true);
+  };
+
+  const handleCloseDelete = () => {
+    setOpenDelete(false);
+  };
 
   const getObat = (ID_OBAT) => {
     ObatDataService.get(ID_OBAT)
@@ -78,14 +98,54 @@ function ComObat(props) {
     setCurrentObat({ ...currentObat, [name]: value });
   };
 
+  const handelClickIcon = (event) => {
+    setMessage("");
+    setOpenAlert(false);
+  };
+
   const updateObat = () => {
+    setOpenAlert(true);
     ObatDataService.update(currentObat.ID_OBAT, currentObat)
       .then((response) => {
         console.log(response.data);
-        setMessage("The data obat was updated successfully!");
+        setMessage(
+          <Alert
+            action={
+              <Button
+                color="inherit"
+                size="small"
+                component={Link}
+                to={"/obat"}
+              >
+                Kembali
+              </Button>
+            }
+          >
+            Data obat berhasil diubah, klik tombol Kembali di samping.
+          </Alert>
+        );
       })
       .catch((e) => {
         console.log(e);
+        setMessage(
+          <Collapse in={!openAlert}>
+            <Alert
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={handelClickIcon}
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
+              }
+              severity="error"
+            >
+              Gagal update.
+            </Alert>
+          </Collapse>
+        );
       });
   };
 
@@ -100,89 +160,124 @@ function ComObat(props) {
       });
   };
 
+  const dialogDelete = (
+    <div>
+      <Dialog
+        open={openDelete}
+        onClose={handleCloseDelete}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Hapus data?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Data tersebut akan dihapus jika klik Hapus.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={deleteObat} color="Secondary">
+            Hapus
+          </Button>
+          <Button onClick={handleCloseDelete} color="primary" autoFocus>
+            Batal
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+
   return (
     <div style={{ display: "flex" }}>
+      {console.log(`test ${openAlert}`)}
       {currentObat ? (
         <div className="edit-form">
-          <h4>Ubah Data</h4>
-
-          <TextField
-            type="text"
-            className="form-control"
-            id="NAMAOBAT"
-            name="NAMAOBAT"
-            value={currentObat.NAMAOBAT}
-            onChange={handleInputChange}
-            variant="outlined"
-            margin="dense"
-            label="Nama Obat"
-            style={{ paddingLeft: "5px", width: "300px" }}
-          />
-
-          <TextField
-            type="text"
-            className="form-control"
-            id="STOK"
-            name="STOK"
-            value={currentObat.STOK}
-            onChange={handleInputChange}
-            variant="outlined"
-            margin="dense"
-            label="Stok"
-            style={{ paddingLeft: "5px", width: "100px" }}
-          />
-
-          <TextField
-            type="text"
-            className="form-control"
-            id="HAPUS"
-            name="HAPUS"
-            value={currentObat.HAPUS}
-            onChange={handleInputChange}
-            variant="outlined"
-            margin="dense"
-            label="Hapus"
-            style={{ paddingLeft: "5px", width: "100px" }}
-          />
-
-          <TextField
-            type="text"
-            className="form-control"
-            id="ID_SATUAN"
-            name="ID_SATUAN"
-            value={currentObat.ID_SATUAN}
-            onChange={handleInputChange}
-            variant="outlined"
-            margin="dense"
-            label="ID Satuan"
-          />
-
-          <TextField
-            type="text"
-            className="form-control"
-            id="CODE_OBAT"
-            name="CODE_OBAT"
-            value={currentObat.CODE_OBAT}
-            onChange={handleInputChange}
-            variant="outlined"
-            margin="dense"
-            label="Kode Obat"
-            style={{ paddingLeft: "5px", width: "100px" }}
-          />
-
-          <TextField
-            type="text"
-            className="form-control"
-            id="HARGA"
-            name="HARGA"
-            value={currentObat.HARGA}
-            onChange={handleInputChange}
-            variant="outlined"
-            margin="dense"
-            label="Harga"
-            style={{ paddingLeft: "5px", width: "100px" }}
-          />
-
+          <div style={{ display: "flex", paddingLeft: "5px" }}>
+            <h4>Ubah Data</h4>
+          </div>
+          <div style={{ paddingLeft: "5px", display: "inline" }}>
+            <TextField
+              type="text"
+              className="form-control"
+              id="NAMAOBAT"
+              name="NAMAOBAT"
+              value={currentObat.NAMAOBAT}
+              onChange={handleInputChange}
+              variant="outlined"
+              margin="dense"
+              label="Nama Obat"
+              style={{ width: "300px" }}
+            />
+          </div>
+          <div style={{ paddingLeft: "5px", display: "inline" }}>
+            <TextField
+              type="text"
+              className="form-control"
+              id="STOK"
+              name="STOK"
+              value={currentObat.STOK}
+              onChange={handleInputChange}
+              variant="outlined"
+              margin="dense"
+              label="Stok"
+              style={{ width: "100px" }}
+            />
+          </div>
+          <div style={{ paddingLeft: "5px", display: "inline" }}>
+            <TextField
+              type="text"
+              className="form-control"
+              id="HAPUS"
+              name="HAPUS"
+              value={currentObat.HAPUS}
+              onChange={handleInputChange}
+              variant="outlined"
+              margin="dense"
+              label="Hapus"
+              style={{ width: "100px" }}
+            />
+          </div>
+          <div style={{ paddingLeft: "5px", display: "inline" }}>
+            <TextField
+              type="text"
+              className="form-control"
+              id="ID_SATUAN"
+              name="ID_SATUAN"
+              value={currentObat.ID_SATUAN}
+              onChange={handleInputChange}
+              variant="outlined"
+              margin="dense"
+              label="ID Satuan"
+            />
+          </div>
+          <div style={{ paddingLeft: "5px", display: "inline" }}>
+            <TextField
+              type="text"
+              className="form-control"
+              id="CODE_OBAT"
+              name="CODE_OBAT"
+              value={currentObat.CODE_OBAT}
+              onChange={handleInputChange}
+              variant="outlined"
+              margin="dense"
+              label="Kode Obat"
+              style={{ width: "100px" }}
+            />
+          </div>
+          <div style={{ paddingLeft: "5px", display: "inline" }}>
+            <TextField
+              type="text"
+              className="form-control"
+              id="HARGA"
+              name="HARGA"
+              value={currentObat.HARGA}
+              onChange={handleInputChange}
+              variant="outlined"
+              margin="dense"
+              label="Harga"
+              style={{ width: "100px" }}
+            />
+          </div>
+          {console.log(`idSatuan ${idSatuan} titk`)}
           <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label" margin="dense">
               Satuan
@@ -190,7 +285,7 @@ function ComObat(props) {
             <Select
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
-              value={(currentObat.ID_SATUAN = idSatuan)}
+              value={idSatuan}
               onChange={handleChange}
               label="Satuan"
               margin="dense"
@@ -208,13 +303,19 @@ function ComObat(props) {
               <Button
                 variant="contained"
                 color="secondary"
-                onClick={deleteObat}
+                onClick={handleClickOpenDelete}
+                disabled={openAlert}
               >
                 Delete
               </Button>
             </div>
             <div style={{ paddingLeft: "5px" }}>
-              <Button variant="contained" color="primary" onClick={updateObat}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={updateObat}
+                disabled={openAlert}
+              >
                 Update
               </Button>
             </div>
@@ -230,6 +331,7 @@ function ComObat(props) {
             </div>
           </div>
           <p>{message}</p>
+          {dialogDelete}
         </div>
       ) : (
         <div>

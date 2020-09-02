@@ -142,20 +142,6 @@ function ListObat() {
                       {obat.HARGA}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {/* <Link to={"/obat/" + obat.ID_OBAT}>
-                        <EditIcon
-                          onClick={toggle}
-                          style={{ cursor: "pointer" }}
-                          className={
-                            "list-group-item " +
-                            (index === currentIndex ? "active" : "")
-                          }
-                          onMouseEnter={() => setActiveObat(obat, index)}
-                          key={index}
-                          // component={Link}
-                          // to={"/obat/" + obat.ID_OBAT}
-                        />
-                      </Link> */}
                       <Button
                         variant="contained"
                         color="primary"
@@ -177,7 +163,6 @@ function ListObat() {
             </TableBody>
           </Table>
         </TableContainer>
-        {/* {currentObat} */}
       </div>
     </div>
   );

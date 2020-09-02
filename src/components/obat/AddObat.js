@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 function AddObat() {
   const classes = useStyles();
-  const [idSatuan, setIdSatuan] = React.useState(0);
+  const [idSatuan, setIdSatuan] = React.useState("");
   const [satuan, setSatuan] = useState([]);
 
   useEffect(() => {
@@ -111,96 +111,84 @@ function AddObat() {
       ) : (
         <div style={{ display: "flex" }}>
           <div>
-            <h4>Tambah Data</h4>
-            <TextField
-              type="text"
-              className="form-control"
-              id="NAMAOBAT"
-              required
-              value={obat.NAMAOBAT}
-              onChange={handleInputChange}
-              name="NAMAOBAT"
-              variant="outlined"
-              margin="dense"
-              label="Nama Obat"
-              style={{ paddingLeft: "5px", width: "300px" }}
-              // fullWidth="true"
-            />
-
-            <TextField
-              type="text"
-              className="form-control"
-              id="STOK"
-              required
-              value={obat.STOK}
-              onChange={handleInputChange}
-              name="STOK"
-              variant="outlined"
-              margin="dense"
-              label="Stok"
-              style={{ paddingLeft: "5px", width: "100px" }}
-              // fullWidth="true"
-            />
-
-            <TextField
-              type="text"
-              className="form-control"
-              id="HAPUS"
-              required
-              value={obat.HAPUS}
-              onChange={handleInputChange}
-              name="HAPUS"
-              variant="outlined"
-              margin="dense"
-              label="Hapus"
-              style={{ paddingLeft: "5px", width: "100px" }}
-              // fullWidth="true"
-            />
-
-            {/* <TextField
-              type="text"
-              className="form-control"
-              id="ID_SATUAN"
-              required
-              value={(obat.ID_SATUAN = idSatuan)}
-              onChange={handleInputChange}
-              name="ID_SATUAN"
-              variant="outlined"
-              margin="dense"
-              label="ID Satuan"
-              style={{ paddingLeft: "5px", width: "100px" }}
-              // fullWidth="true"
-            /> */}
-
-            <TextField
-              type="text"
-              className="form-control"
-              id="CODE_OBAT"
-              required
-              value={obat.CODE_OBAT}
-              onChange={handleInputChange}
-              name="CODE_OBAT"
-              variant="outlined"
-              margin="dense"
-              label="Kode Obat"
-              style={{ paddingLeft: "5px", width: "100px" }}
-              // fullWidth="true"
-            />
-
-            <TextField
-              type="text"
-              className="form-control"
-              id="HARGA"
-              required
-              value={obat.HARGA}
-              onChange={handleInputChange}
-              name="HARGA"
-              variant="outlined"
-              margin="dense"
-              label="Harga"
-              style={{ paddingLeft: "5px", width: "100px" }}
-              // fullWidth="true"
-            />
+            <div style={{ display: "flex", paddingLeft: "5px" }}>
+              <h4>Tambah Data</h4>
+            </div>
+            <div style={{ paddingLeft: "5px", display: "inline" }}>
+              <TextField
+                type="text"
+                className="form-control"
+                id="NAMAOBAT"
+                required
+                value={obat.NAMAOBAT}
+                onChange={handleInputChange}
+                name="NAMAOBAT"
+                variant="outlined"
+                margin="dense"
+                label="Nama Obat"
+                style={{ width: "300px" }}
+              />
+            </div>
+            <div style={{ paddingLeft: "5px", display: "inline" }}>
+              <TextField
+                type="text"
+                className="form-control"
+                id="STOK"
+                required
+                value={obat.STOK}
+                onChange={handleInputChange}
+                name="STOK"
+                variant="outlined"
+                margin="dense"
+                label="Stok"
+                style={{ width: "100px" }}
+              />
+            </div>
+            <div style={{ paddingLeft: "5px", display: "inline" }}>
+              <TextField
+                type="text"
+                className="form-control"
+                id="HAPUS"
+                required
+                value={obat.HAPUS}
+                onChange={handleInputChange}
+                name="HAPUS"
+                variant="outlined"
+                margin="dense"
+                label="Hapus"
+                style={{ width: "100px" }}
+              />
+            </div>
+            <div style={{ paddingLeft: "5px", display: "inline" }}>
+              <TextField
+                type="text"
+                className="form-control"
+                id="CODE_OBAT"
+                required
+                value={obat.CODE_OBAT}
+                onChange={handleInputChange}
+                name="CODE_OBAT"
+                variant="outlined"
+                margin="dense"
+                label="Kode Obat"
+                style={{ width: "100px" }}
+              />
+            </div>
+            <div style={{ paddingLeft: "5px", display: "inline" }}>
+              <TextField
+                type="text"
+                className="form-control"
+                id="HARGA"
+                required
+                value={obat.HARGA}
+                onChange={handleInputChange}
+                name="HARGA"
+                variant="outlined"
+                margin="dense"
+                label="Harga"
+                style={{ width: "100px" }}
+              />
+            </div>
 
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label" margin="dense">
